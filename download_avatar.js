@@ -13,7 +13,7 @@ const input = process.argv.slice(2);
 console.log('Welcome to the GitHub Avatar Downloader!');
 
 
-function getRepoContributors(repoOwner, repoName, cb) {
+const getRepoContributors = function (repoOwner, repoName, cb) {
   let requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
   /*make an if statement that terminates the function and output an error message if not exactly two arguments were inputted*/
   if (input.length !== 2) {
