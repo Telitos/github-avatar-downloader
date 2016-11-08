@@ -8,7 +8,7 @@ const fs = require('fs');
 
 const GITHUB_USER = token.username;
 const GITHUB_TOKEN = token.token;
-/*set up a const to get */
+/*set up a const to get arguments from the command line, dropping the first two elements*/
 const input = process.argv.slice(2)
 
 console.log('Welcome to the GitHub Avatar Downloader!');
@@ -17,6 +17,11 @@ console.log('Welcome to the GitHub Avatar Downloader!');
 function getRepoContributors(repoOwner, repoName, cb) {
   // first we construct the url we want to GET by concatenating all the required info to form the proper url
   let requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
+  /*make an if statement that terminates the function and output an error message if not exactly two arguments were inputted*/
+  if (input.length !== 2) {
+    console.log('Sorry, you must input exactly two arguments for this to work!')
+    return
+  }
 
   //Next we make out get request using the url just created, but also adding the object {url: 'www.whatevr.com', headers: {'User-Agent': 'whoever'}}
   // because that's what gitHub requires.
