@@ -19,7 +19,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
   let requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
   /*make an if statement that terminates the function and output an error message if not exactly two arguments were inputted*/
   if (input.length !== 2) {
-    console.log('Sorry, you must input exactly two arguments for this to work!')
+    console.log('Sorry, you must input exactly two arguments for this to work!');
     return ;
   }
 
@@ -27,7 +27,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
   // because that's what gitHub requires.
   request.get({ url: requestURL, headers: { 'User-Agent': 'random' }}, function (err, response, body) {
     if (err) {
-      console.log('An error occurred:', err)
+      console.log('An error occurred:', err);
       throw err;
     } else if (response.statusCode === 200) {
     let data = JSON.parse(body); // we know the body is JSON so we can parse it right away to pass it to our callback function
@@ -73,9 +73,9 @@ getRepoContributors(input[0], input[1], function(err, result) {
   and pass the outcomes to the downloadImageByURL function*/
 
   result.forEach(function(contributors) {
-    let avatarUrl = contributors['avatar_url']
-    let path = './avatars/' + contributors['login'] + '.jpg'
-    downloadImageByURL(avatarUrl, path)
+    let avatarUrl = contributors['avatar_url'];
+    let path = './avatars/' + contributors['login'] + '.jpg';
+    downloadImageByURL(avatarUrl, path);
   });
 });
 

@@ -10,7 +10,7 @@ function downloadImageByURL(url, filePath) {
 
   request.get(url, function(err, response) {
     if (err) {
-      throw error
+      throw error;
     } else if (response.statusCode === 200) {
       console.log('Download complete!');
     }
@@ -21,6 +21,6 @@ function downloadImageByURL(url, filePath) {
   })
 
   .pipe(fs.createWriteStream(filePath));
-}
+};
 
-downloadImageByURL(testUrl, testPath)
+downloadImageByURL(testUrl, testPath);
