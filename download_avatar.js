@@ -21,9 +21,9 @@ const getRepoContributors = function (repoOwner, repoName, cb) {
     return ;
   }
 
-  /*Next we make out get request using the url just created, but also adding the object
-  {url: 'www.whatevr.com', headers: {'User-Agent': 'whoever'}}
-   because that's what gitHub requires.*/
+    /*Next we make out get request using the url just created, but also adding the object
+    {url: 'www.whatevr.com', headers: {'User-Agent': 'whoever'}}
+    because that's what gitHub requires.*/
     request.get({ url: requestURL, headers: { 'User-Agent': 'random' }}, function (err, response, body) {
       if (err) {
       console.log('An error occurred:', err);
