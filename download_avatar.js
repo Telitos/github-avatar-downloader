@@ -4,7 +4,8 @@ require('dotenv').config();
 const request = require('request');
 const fs = require('fs');
 const imgDownloader = require('./imgDownloader');
-/*Use process.env to import confidential info from .env*/
+/*Use process.env to import confidential info from .env file. Repalce with your own credentials when
+running the program*/
 const GITHUB_USER = process.env.USERNAME;
 const GITHUB_TOKEN = process.env.TOKEN;
 /*set up a const to get arguments from the command line, dropping the first two elements*/
