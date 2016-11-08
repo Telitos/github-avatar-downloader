@@ -8,7 +8,7 @@ let testPath = './avatars/test.jpg'
 
 function downloadImageByURL(url, filePath) {
 
-  request.get(url, function(err, response, body) {
+  request.get(url, function(err, response) {
     if (err) {
       throw error
     } else if (response.statusCode === 200) {

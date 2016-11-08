@@ -37,20 +37,32 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
-  //Our call back functoin will just loop over the contributors and print out the avatar_url
-  result.forEach(function(contributors) {
-    console.log(contributors)
-    console.log(contributors['avatar_url'])
 
+// I'll first write a function expression to process each of the avatars' url and download them into the specified path
+
+  function downloadImageByURL(url, filePath) {
+
+  request.get(url, function(err, response) {
+    if (err) {
+      throw error
+    } else if (response.statusCode === 200) {
+      console.log('Download complete!');
+    }
+    })
+  //   .on ('response', function (response) {
+  //   console.log('Response Status Code: ', response.statusCode);
+  //   console.log('Response Status Message: ', response.statusMessage);
+  // })
+
+  .pipe(fs.createWriteStream(filePath));
+  }
+
+  //Our call back functoin will just loop over the contributors and print out the avatar_url
+
+  result.forEach(function(contributors) {
+    let avatarUrl = contributors['avatar_url']
+    let path = './avatars/' + contributors['login'] + '.jpg'
+    downloadImageByURL(avatarUrl, path)
   });
 });
 
-
-function downloadImageByURL(url, filePath) {
-
-  request.get(url, function(err, response){
-
-
-
-  })
-}
