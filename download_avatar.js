@@ -39,6 +39,18 @@ getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
   //Our call back functoin will just loop over the contributors and print out the avatar_url
   result.forEach(function(contributors) {
+    console.log(contributors)
     console.log(contributors['avatar_url'])
+
   });
 });
+
+
+function downloadImageByURL(url, filePath) {
+
+  request.get(url, function(err, response){
+
+
+
+  })
+}
