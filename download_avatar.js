@@ -22,19 +22,23 @@ function getRepoContributors(repoOwner, repoName, cb) {
           if (err) {
             throw err;
           } else if (response.statusCode === 200) {
+            error = "No Errors. Everything went fine."
             let data = JSON.parse(body) // we know the body is JSON so we can parse it right away to pass it to our callback function
             cb(error, data)
             console.log("Data acquired!") // just so we know the process is done
           };
         })
-          .on('response', function (response) {                           // This give you various info regarding the response (not necessary)
-               console.log('Response Status Code: ', response.statusCode);
-               console.log('Response Status Message: ', response.statusMessage);
-               console.log('Response Content Type: ', response.headers['content-type'])
-             });
-        }
+        //   .on('response', function (response) {                           // This give you various info regarding the response (not necessary)
+        //        console.log('Response Status Code: ', response.statusCode);
+        //        console.log('Response Status Message: ', response.statusMessage);
+        //        console.log('Response Content Type: ', response.headers['content-type'])
+        //      });
+        };
 
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
-  console.log("Result:", result);
+  //Our call back functoin will just loop over the contributors and print out the avatar_url
+  result.forEach(function(contributors) {
+    console.log(contributors['avatar_url'])
+  });
 });
