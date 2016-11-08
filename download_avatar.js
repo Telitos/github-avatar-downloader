@@ -44,12 +44,12 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 getRepoContributors(input[0], input[1], function(err, result) {
 
-// I'll first write a function expression to process each of the avatars' url and download them into the specified path
   if (err) {
     console.log('An error occurred:', err);
     throw err;                                    /*as previsouly mentionned, no error will ever reach this point in our program, but should we
                                                   want this part of the code to be used elswhere, errors will be handled by default*/
   }
+  // I'll first write a function expression to process each of the avatars' url and download them into the specified path
 
   function downloadImageByURL(url, filePath) {
 
